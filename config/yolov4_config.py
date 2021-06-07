@@ -44,7 +44,7 @@ VAL = {
     "MULTI_SCALE_VAL": False,
     "FLIP_VAL": False,
     "Visual": False,
-    "showatt": False
+    "showatt": True
 }
 
 Customer_DATA = {

@@ -9,7 +9,7 @@ import glob
 import xml.etree.ElementTree as ET
 
 image_ids = (
-    open("VOCdevkit\VOC2007/ImageSets/Main/test.txt").read().strip().split()
+    open("../data/VOCdevkit/VOC2007/ImageSets/Main/test.txt").read().strip().split()
 )
 
 if not os.path.exists("./input"):
@@ -20,7 +20,7 @@ if not os.path.exists("./input/ground-truth"):
 for image_id in image_ids:
     with open("./input/ground-truth/" + image_id + ".txt", "w") as new_f:
         root = ET.parse(
-            "VOCdevkit\VOC2007/Annotations/" + image_id + ".xml"
+            "../data/VOCdevkit/VOC2007/Annotations/" + image_id + ".xml"
         ).getroot()
         for obj in root.findall("object"):
             if obj.find("difficult") != None:

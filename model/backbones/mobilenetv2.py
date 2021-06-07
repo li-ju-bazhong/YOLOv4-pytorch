@@ -132,6 +132,7 @@ class _MobileNetV2(nn.Module):
                     block(input_channel, output_channel, s if i == 0 else 1, t)
                 )
                 input_channel = output_channel
+                # this places attention module
         self.features = nn.Sequential(*layers)
         # building last several layers
         output_channel = (

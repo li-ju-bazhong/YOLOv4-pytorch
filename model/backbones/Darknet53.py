@@ -122,7 +122,7 @@ class CSPFirstStage(nn.Module):
 
         self.blocks_conv = nn.Sequential(
             CSPBlock(out_channels, out_channels, in_channels),
-            Convolutional(out_channels, out_channels, 1),
+
         )
 
         self.concat_conv = Convolutional(out_channels * 2, out_channels, 1)
@@ -130,13 +130,13 @@ class CSPFirstStage(nn.Module):
     def forward(self, x):
         x = self.downsample_conv(x)
 
-        x0 = self.split_conv0(x)
-        x1 = self.split_conv1(x)
+        #x0 = self.split_conv0(x)
+        #x1 = self.split_conv1(x)
 
-        x1 = self.blocks_conv(x1)
+        x = self.blocks_conv(x)
 
-        x = torch.cat([x1, x0], dim=1)
-        x = self.concat_conv(x)
+        #x = torch.cat([x1, x0], dim=1)
+        #x = self.concat_conv(x)
 
         return x
 
@@ -157,21 +157,21 @@ class CSPStage(nn.Module):
                 CSPBlock(out_channels // 2, out_channels // 2)
                 for _ in range(num_blocks)
             ],
-            Convolutional(out_channels // 2, out_channels // 2, 1)
+            # Convolutional(out_channels // 2, out_channels // 2, 1)
         )
 
         self.concat_conv = Convolutional(out_channels, out_channels, 1)
 
     def forward(self, x):
-        x = self.downsample_conv(x)
+        #x = self.downsample_conv(x)
 
-        x0 = self.split_conv0(x)
-        x1 = self.split_conv1(x)
+        #x0 = self.split_conv0(x)
+        #x1 = self.split_conv1(x)
 
-        x1 = self.blocks_conv(x1)
+        x = self.blocks_conv(x)
 
-        x = torch.cat([x0, x1], dim=1)
-        x = self.concat_conv(x)
+        #x = torch.cat([x0, x1], dim=1)
+        #x = self.concat_conv(x)
 
         return x
 
