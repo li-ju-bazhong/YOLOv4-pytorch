@@ -220,3 +220,19 @@ The heatmaps can be seen in the `output/` like this:
 * pytorch : https://github.com/ultralytics/yolov3
 https://github.com/Peterisfar/YOLOV3
 * keras : https://github.com/qqwweee/keras-yolo3
+
+## train steps
+1. copy datasets to data directory
+structure likes following:
+data
+	VOCdevkit
+		VOC2007
+			Annotations
+			ImageSets
+			JPEGImages
+			......
+		VOC2012
+			......
+2. follow the author forementioned steps.
+3. after run utils/get_gt_txt.py and before run utils/get_map.py, first run the eval_voc.py with setting the mode as "val" so you will get a new directory namely pred_result.  Then run run.py to get same format file for getting maps.
+
