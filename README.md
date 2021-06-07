@@ -224,6 +224,7 @@ https://github.com/Peterisfar/YOLOV3
 ## train steps
 1. copy datasets to data directory
 structure likes following:
+```bash
 data
 	VOCdevkit
 		VOC2007
@@ -233,6 +234,7 @@ data
 			......
 		VOC2012
 			......
+```
 2. follow the author forementioned steps.
 3. after run utils/get_gt_txt.py and before run utils/get_map.py, first run the eval_voc.py with setting the mode as "val" so you will get a new directory namely pred_result.  Then run run.py to get same format file for getting maps.
 
